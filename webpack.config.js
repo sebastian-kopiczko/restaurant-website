@@ -1,11 +1,15 @@
+const webpack = require("webpack");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
-// const LOGO_PATH = path.resolve(__dirname, "fixtures/logo.png");
+// const LOGO_PATH = path.resolve(__dirname, "fixtures/logo.png")
+const extractSass = new ExtractTextPlugin({
+  filename: "styles.css"
+});
 
 module.exports = {
-  entry: "./src/main.js",
+  entry: "./src/index.js",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist")
@@ -13,13 +17,26 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        include: path.resolve(__dirname, "src"),
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: [["es2015", { modules: false }]]
+            }
+          }
+        ]
+      },
+      {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           use: [
             {
               loader: "css-loader",
               options: {
-                minimize: true,
+                // minimize: true,
                 sourceMap: true
               }
             },
@@ -36,16 +53,6 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: ["file-loader", "image-webpack-loader"]
-      },
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["env"]
-          }
-        }
       }
     ]
   },
@@ -56,7 +63,6 @@ module.exports = {
     open: true
   },
   plugins: [
-    new ExtractTextPlugin("main.css"),
     //     new FaviconsWebpackPlugin("./src/assets/favicon.png"),
     new HtmlWebpackPlugin({
       title: "Restaurant website",
@@ -65,6 +71,12 @@ module.exports = {
       },
       hash: true,
       template: "./src/index.ejs"
-    })
+    }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      Popper: ["popper.js", "default"]
+    }),
+    extractSass
   ]
 };

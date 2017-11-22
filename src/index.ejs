@@ -16,8 +16,7 @@
 
 <body>
     <!-- div.container>(div.landing>(header.header>a.logo+img.logo__img+nav.nav>ul.nav__menu>li.nav__item*7>a)+(section.landing-page>h1.landing-page__heading+div.landing__buttons>a.page-button*2))+(section.about>div.section-content>h2.section-content__heading+p.section-content__text)+(section.ingredients>div.section-content.bg-shadow--dark>h2.section-content__heading+p.section-content__text+img.ingredients__img*3)+(section.menu>div.section-content>h2.section-content__heading+ul.menu__category>li.menu__item*4)+(section.review>div.section-content.bg-shadow--dark>h2.section-content__heading+p.section-content__text)+(section.book-table>img.book-table__img*2+div.section-content>h2.section-content__heading+p.section-content__text)+(footer.footer>(div.section-content>h2.section-content__heading+p.section-content__text)+(div.section-content>h2.section-content__heading+div.footer__opening-hours)+(div.section-content>div.footer__location+div.footer__socials)) -->
-
-    <div class="container">
+    <div itemscope itemtype="http://schema.org/Restaurant" class="container">
         <div class="landing">
             <header class="header">
                 <a href="" class="logo"></a>
@@ -25,7 +24,7 @@
                 <nav class="nav">
                     <ul class="nav__menu">
                         <li class="nav__item">
-                            <a href="#">Home</a>
+                            <a href="javascript:void(0)">Home</a>
                         </li>
                         <li class="nav__item">
                             <a href="#about">About</a>
@@ -50,7 +49,7 @@
                     </ul>
                 </nav>
             </header>
-            <section class="landing-page">
+            <section id="landing" class="landing-page">
                 <h1 class="landing-page__heading">the right ingredients for the right food</h1>
                 <div class="landing__buttons">
                     <a href="" class="page-button">book a table</a>
@@ -58,7 +57,7 @@
                 </div>
             </section>
         </div>
-        <section class="about">
+        <section id="about" class="about">
             <div class="section-content">
                 <h2 class="section-content__heading">Just the right food</h2>
                 <p class="section-content__text">If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back
@@ -66,7 +65,7 @@
                     make us hard to resist! Stop in today and check us out!</p>
             </div>
         </section>
-        <section class="ingredients">
+        <section id="ingredients" class="ingredients">
             <div class="section-content bg-shadow--dark">
                 <h2 class="section-content__heading">Fine ingredients</h2>
                 <p class="section-content__text">If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back
@@ -78,140 +77,137 @@
                 <img src="" alt="" class="ingredients__img">
             </div>
         </section>
-        <section class="menu">
-            <div class="section-content">
-                <div class="menu-category">
+        <section id="menu" class="menu">
+            <div class="section-content" itemscope itemtype="http://schema.org/Menu">
+                <div class="menu-category" itemscope itemtype="http://schema.org/MenuSection">
                     <h2 class="menu__heading">Appetisers</h2>
                     <ul class="menu__list">
                         <li class="menu__item dish">
-                            <div class="dish__heading">
-                                <span class="dish__name">Tzatsiki</span>
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/MenuItem" class="dish__heading">
+                                <span itemprop="name" class="dish__name">Tzatsiki</span>
                                 <span class="dish__price" itemprop="priceCurrency" content="USD">$</span>
                                 <span itemprop="price" content="3.99">3.99</span>
-                                <meta itemprop="priceCurrency" content="USD" />
                             </div>
-                            <div class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
+                            <div itemprop="description" class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
                         </li>
                         <li class="menu__item dish">
-                            <div class="dish__heading">
-                                <span class="dish__name">Aubergine Salad</span>
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/MenuItem" class="dish__heading">
+                                <span itemprop="name" class="dish__name">Aubergine Salad</span>
                                 <span class="dish__price" itemprop="priceCurrency" content="USD">$</span>
                                 <span itemprop="price" content="3.99">4.99</span>
                             </div>
-                            <div class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
+                            <div itemprop="description" class="dish__description">Reiciendis exercitationem fugiat, quia, sequi iure temporibus.</div>
                         </li>
                         <li class="menu__item dish">
-                            <div class="dish__heading">
-                                <span class="dish__name">Shrimp Salad</span>
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/MenuItem" class="dish__heading">
+                                <span itemprop="name" class="dish__name">Red Salad</span>
                                 <span class="dish__price" itemprop="priceCurrency" content="USD">$</span>
                                 <span itemprop="price" content="3.99">5.49</span>
                             </div>
-                            <div class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
+                            <div itemprop="description" class="dish__description">Voluptate saepe exercitationem iure minus consequuntur doloremque doloribus.</div>
                         </li>
                     </ul>
                 </div>
-                <div class="menu-category">
+                <div class="menu-category" itemscope itemtype="http://schema.org/MenuSection">
                     <h2 class="menu__heading">Starters</h2>
                     <ul class="menu__list">
                         <li class="menu__item dish">
-                            <div class="dish__heading">
-                                <span class="dish__name">Haloumi</span>
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/MenuItem" class="dish__heading">
+                                <span itemprop="name" class="dish__name">Haloumi</span>
                                 <span class="dish__price" itemprop="priceCurrency" content="USD">$</span>
-                                <span itemprop="price" content="3.99">3.69</span>
-                                <meta itemprop="priceCurrency" content="USD" />
+                                <span itemprop="price" content="3.99">5.49</span>
                             </div>
-                            <div class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
+                            <div itemprop="description" class="dish__description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
                         </li>
                         <li class="menu__item dish">
-                            <div class="dish__heading">
-                                <span class="dish__name">Spinach Pie</span>
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/MenuItem" class="dish__heading">
+                                <span itemprop="name" class="dish__name">Spinach Pie</span>
                                 <span class="dish__price" itemprop="priceCurrency" content="USD">$</span>
-                                <span itemprop="price" content="3.99">5.99</span>
+                                <span itemprop="price" content="3.99">6.49</span>
                             </div>
-                            <div class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
+                            <div itemprop="description" class="dish__description">Vel molestias totam sapiente dignissimos, officiis doloribus.</div>
+                        </li>
+                        <li class="menu__item dish">
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/MenuItem" class="dish__heading">
+                                <span itemprop="name" class="dish__name">Scallops</span>
+                                <span class="dish__price" itemprop="priceCurrency" content="USD">$</span>
+                                <span itemprop="price" content="3.99">12.49</span>
+                            </div>
+                            <div itemprop="description" class="dish__description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
                         </li>
                     </ul>
                 </div>
-                <div class="menu-category">
+                <div class="menu-category" itemscope itemtype="http://schema.org/MenuSection">
                     <h2 class="menu__heading">Salads</h2>
                     <ul class="menu__list">
                         <li class="menu__item dish">
-                            <div class="dish__heading">
-                                <span class="dish__name">Olive Special</span>
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/MenuItem" class="dish__heading">
+                                <span itemprop="name" class="dish__name">Olive Special</span>
                                 <span class="dish__price" itemprop="priceCurrency" content="USD">$</span>
-                                <span itemprop="price" content="3.99">5.69</span>
-                                <meta itemprop="priceCurrency" content="USD" />
+                                <span itemprop="price" content="3.99">4.99</span>
                             </div>
-                            <div class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
+                            <div itemprop="description" class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
                         </li>
                         <li class="menu__item dish">
-                            <div class="dish__heading">
-                                <span class="dish__name">Greek Salad</span>
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/MenuItem" class="dish__heading">
+                                <span itemprop="name" class="dish__name">Greek Salad</span>
                                 <span class="dish__price" itemprop="priceCurrency" content="USD">$</span>
                                 <span itemprop="price" content="3.99">5.99</span>
                             </div>
-                            <div class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
+                            <div itemprop="description" class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
                         </li>
                         <li class="menu__item dish">
-                            <div class="dish__heading">
-                                <span class="dish__name">Cesar Salad</span>
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/MenuItem" class="dish__heading">
+                                <span itemprop="name" class="dish__name">Meat Salad</span>
                                 <span class="dish__price" itemprop="priceCurrency" content="USD">$</span>
                                 <span itemprop="price" content="3.99">7.49</span>
                             </div>
-                            <div class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
+                            <div itemprop="description" class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
                         </li>
                     </ul>
                 </div>
-                <div class="menu-category">
+                <div class="menu-category" itemscope itemtype="http://schema.org/MenuSection">
                     <h2 class="menu__heading">Main Dishes</h2>
                     <ul class="menu__list">
                         <li class="menu__item dish">
-                            <div class="dish__heading">
-                                <span class="dish__name">Cornish Mackerel</span>
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/MenuItem" class="dish__heading">
+                                <span itemprop="name" class="dish__name">Cornish Mackerel</span>
                                 <span class="dish__price" itemprop="priceCurrency" content="USD">$</span>
-                                <span itemprop="price" content="3.99">7.69</span>
-                                <meta itemprop="priceCurrency" content="USD" />
+                                <span itemprop="price" content="3.99">8.99</span>
                             </div>
-                            <div class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
+                            <div itemprop="description" class="dish__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. </div>
                         </li>
                         <li class="menu__item dish">
-                            <div class="dish__heading">
-                                <span class="dish__name">Roast Lamb</span>
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/MenuItem" class="dish__heading">
+                                <span itemprop="name" class="dish__name">Roast Lamb </span>
                                 <span class="dish__price" itemprop="priceCurrency" content="USD">$</span>
                                 <span itemprop="price" content="3.99">13.99</span>
                             </div>
-                            <div class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
+                            <div itemprop="description" class="dish__description">Iusto alias impedit aspernatur error .</div>
                         </li>
                         <li class="menu__item dish">
-                            <div class="dish__heading">
-                                <span class="dish__name">Fried Chicken</span>
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/MenuItem" class="dish__heading">
+                                <span itemprop="name" class="dish__name">Lasagne</span>
                                 <span class="dish__price" itemprop="priceCurrency" content="USD">$</span>
                                 <span itemprop="price" content="3.99">8.49</span>
                             </div>
-                            <div class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
-                        </li>
-                        <li class="menu__item dish">
-                            <div class="dish__heading">
-                                <span class="dish__name">Beef Steak</span>
-                                <span class="dish__price" itemprop="priceCurrency" content="USD">$</span>
-                                <span itemprop="price" content="3.99">11.49</span>
-                            </div>
-                            <div class="dish__description">Refreshing traditional cucumber and garlic yoghurt dip.</div>
+                            <div itemprop="description" class="dish__description">Ducimus officiis praesentium cupiditate eaque vitae odio quo.</div>
                         </li>
                     </ul>
                 </div>
             </div>
         </section>
-        <section class="review">
+        <section id="review" class="review">
             <div class="section-content bg-shadow--dark">
                 <h2 class="section-content__heading">Guest Reviews</h2>
-                <p class="section-content__text">If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back
-                    for more. Perfect materials and freshly baked food, delicious Lambda cakes, muffins, and gourmet coffees
-                    make us hard to resist! Stop in today and check us out! - food inc, New York
+                <p class="section-content__text">More than
+                    <span itemprop="reviewCount">250</span> reviews If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our
+                    customers coming back for more. Perfect materials and freshly baked food, delicious Lambda cakes, muffins,
+                    and gourmet coffees make us hard to resist! Stop in today and check us out! - food inc, New York
                 </p>
             </div>
         </section>
-        <section class="book-table">
+        <section id="reservations" class="book-table">
             <img src="" alt="" class="book-table__img">
             <img src="" alt="" class="book-table__img">
             <div class="section-content">
@@ -221,18 +217,30 @@
                     make us hard to resist! Stop in today and check us out! Perfect materials and freshly baked food.</p>
             </div>
         </section>
-        <footer class="footer">
+        <footer class="footer" itemscope>
             <div class="section-content">
                 <h2 class="section-content__heading">About us</h2>
-                <p class="section-content__text">Lambda's new and expanded Chelsea location represents a truly authentic Greek patisserie, featuring breakfasts
+                <p itemprop="description" class="section-content__text">Lambda's new and expanded Chelsea location represents a truly authentic Greek patisserie, featuring breakfasts
                     of fresh croissants and steaming bowls of café. Lamda the best restaurant in town.</p>
             </div>
             <div class="section-content">
                 <h2 class="section-content__heading">Opening Hours</h2>
-                <div class="footer__opening-hours"></div>
+                <div class="footer__opening-hours opening-hours">
+                    <div class="opening-hours__item">Mon-Thu: 7:30 am - 9:00 pm</div>
+                    <div class="opening-hours__item">Fri-Sun: 9:00 am - 11:00 pm</div>
+                    <meta itemprop="openingHours" content="Mo-Th 07:30-21:00" />
+                    <meta itemprop="openingHours" content="Fr-Su 09:00-23:00" />
+                </div>
             </div>
             <div class="section-content">
                 <div class="footer__location">Our Location</div>
+                <div class="footer__address">
+                    <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                        <span itemprop="streetAddress">2000 Capitol Ave</span>
+                        <span itemprop="addressLocality">Sacramento</span>
+                        <span itemprop="addressRegion">CA</span>
+                    </span>
+                </div>
                 <div class="footer__socials"></div>
             </div>
         </footer>

@@ -1,14 +1,21 @@
 <!doctype html>
-<html lang="pl">
+
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Blog">
 
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Restaurant website with table booking form">
+    <meta property="og:site_name" content="Lambda Restaurant">
+    <meta property="og:url" content="https://fake-lambda-restaurant.com">
+    <meta property="og:title" content="Welcome to Lambda Restaurant">
+    <meta property="og:image" content="https://fake-lambda-restaurant.com/favicon.png">
+    <meta name="author" content="Sebastian Kopiczko">
+    <link rel="author" href="https://www.linkedin.com/in/sebastian-kopiczko/">
     <title>
         <%= htmlWebpackPlugin.options.title %>
     </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Sebastian Kopiczko">
-
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -17,14 +24,21 @@
 <body>
     <!-- div.container>(div.landing>(header.header>a.logo+img.logo__img+nav.nav>ul.nav__menu>li.nav__item*7>a)+(section.landing-page>h1.landing-page__heading+div.landing__buttons>a.page-button*2))+(section.about>div.section-content>h2.section-content__heading+p.section-content__text)+(section.ingredients>div.section-content.bg-shadow--dark>h2.section-content__heading+p.section-content__text+img.ingredients__img*3)+(section.menu>div.section-content>h2.section-content__heading+ul.menu__category>li.menu__item*4)+(section.review>div.section-content.bg-shadow--dark>h2.section-content__heading+p.section-content__text)+(section.book-table>img.book-table__img*2+div.section-content>h2.section-content__heading+p.section-content__text)+(footer.footer>(div.section-content>h2.section-content__heading+p.section-content__text)+(div.section-content>h2.section-content__heading+div.footer__opening-hours)+(div.section-content>div.footer__location+div.footer__socials)) -->
     <div itemscope itemtype="http://schema.org/Restaurant" class="container">
-        <div class="landing">
-            <header class="header">
-                <a href="" class="logo"></a>
-                <img src="" alt="" class="logo__img">
-                <nav class="nav">
-                    <ul class="nav__menu">
+        <div class="d-flex flex-column justify-content-between landing">
+            <header class="row flex-row align-items-center justify-content-between header">
+                <a href="" class="logo">
+                    <img src={img} alt="Lambda" class="logo__img">
+                    <span class="logo__text">Lambda</span>
+                </a>
+                <nav itemscope itemtype="http://schema.org/SiteNavigationElement" class="nav">
+                    <button aria-haspopup="true" id="menuBtn" class="menu-btn">
+                        <span class="line line01"></span>
+                        <span class="line line02"></span>
+                        <span class="line line03"></span>
+                    </button>
+                    <ul id="navMenu" class="nav__menu">
                         <li class="nav__item">
-                            <a href="javascript:void(0)">Home</a>
+                            <a href="javascript:vdoid(0)">Home</a>
                         </li>
                         <li class="nav__item">
                             <a href="#about">About</a>
@@ -42,20 +56,35 @@
                             <a href="#reservations">Reservations</a>
                         </li>
                         <li class="nav__item">
-                            <a href="">tw</a>
-                            <a href="">yt</a>
-                            <a href="">fb</a>
+                            <a href="/">
+                                <span class="social-icon icon">
+                                    <span class="icon__image" data-icon="facebook" aria-hidden="true"></span>
+                                    <span class="icon__label">Facebook</span>
+                                </span>
+                            </a>
+                            <a href="/">
+                                <span class="social-icon icon">
+                                    <span class="icon__image" data-icon="twitter" aria-hidden="true"></span>
+                                    <span class="icon__label">Twitter</span>
+                                </span>
+                            </a>
+                            <a href="/">
+                                <span class="social-icon icon">
+                                    <span class="icon__image" data-icon="youtbue" aria-hidden="true"></span>
+                                    <span class="icon__label">Youtube</span>
+                                </span>
+                            </a>
                         </li>
                     </ul>
                 </nav>
             </header>
-            <section id="landing" class="landing-page">
-                <h1 class="landing-page__heading">the right ingredients for the right food</h1>
-                <div class="landing__buttons">
-                    <a href="" class="page-button">book a table</a>
-                    <a href="" class="page-button">see the menu</a>
-                </div>
-            </section>
+            <!-- <section id="landing" class="landing-page"> -->
+            <h1 class="landing-page__heading">the right ingredients for the right food</h1>
+            <div class="landing__buttons">
+                <a href="#reservations" class="page-button page-button--black">book a table</a>
+                <a href="#menu" class="page-button page-button--white">see the menu</a>
+            </div>
+            <!-- </section> -->
         </div>
         <section id="about" class="about">
             <div class="section-content">
@@ -68,13 +97,14 @@
         <section id="ingredients" class="ingredients">
             <div class="section-content bg-shadow--dark">
                 <h2 class="section-content__heading">Fine ingredients</h2>
-                <p class="section-content__text">If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back
+                <p class="section-content__text" itemscope itemtype="http://schema.org/Person">If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back
                     for more. Perfect materials and freshly baked food, delicious Lambda cakes, muffins, and gourmet coffees
-                    make us hard to resist! Stop in today and check us out!
+                    make us hard to resist! Stop in today and check us out! -
+                    <a href="https://example.net/author" class="" itemprop="name=">Mark Johnson</a>
                 </p>
-                <img src="" alt="" class="ingredients__img">
-                <img src="" alt="" class="ingredients__img">
-                <img src="" alt="" class="ingredients__img">
+                <img src="" alt="Wheat" class="ingredients__img">
+                <img src="" alt="Dried pepper" class="ingredients__img">
+                <img src="" alt="Bread" class="ingredients__img">
             </div>
         </section>
         <section id="menu" class="menu">
@@ -203,18 +233,51 @@
                 <p class="section-content__text">More than
                     <span itemprop="reviewCount">250</span> reviews If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our
                     customers coming back for more. Perfect materials and freshly baked food, delicious Lambda cakes, muffins,
-                    and gourmet coffees make us hard to resist! Stop in today and check us out! - food inc, New York
+                    and gourmet coffees make us hard to resist! Stop in today and check us out!
                 </p>
             </div>
         </section>
         <section id="reservations" class="book-table">
-            <img src="" alt="" class="book-table__img">
-            <img src="" alt="" class="book-table__img">
+            <figure itemprop="image">
+                <picture>
+                    <source media="(min-width: 45em)" srcset="large-1.jpg 1x, large-2.jpg 2x">
+                    <source media="(min-width: 18em)" srcset="med-1.jpg 1x, med-2.jpg 2x">
+                    <source srcset="small-1.jpg 1x, small-2.jpg 2x">
+                    <img src="" class="book-table__img" alt="Kwadratowa ramka z czerwonym krzyżykiem w środku">
+                </picture>
+                <figcaption>Bardzo ważny obrazek[…],który jest bardzo ważny</figcaption>
+            </figure>
             <div class="section-content">
                 <h2 class="section-content__heading">Just the right food</h2>
                 <p class="section-content__text">If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back
                     for more. Perfect materials and freshly baked food. Delicious Lambda cakes, muffins, and gourmet coffees
                     make us hard to resist! Stop in today and check us out! Perfect materials and freshly baked food.</p>
+                <form method="post" action="" class="book-table__form">
+                    <p>
+                        <label for="customer-name">Name</label>
+                        <input type="text" name="customer" id="customer-name" required>
+                    </p>
+                    <p>
+                        <label for="customer-email">E-mail</label>
+                        <input type="email" name="email" id="customer-email" required>
+                    </p>
+                    <p>
+                        <label for="reservation-date">Date</label>
+                        <input type="date" name="date" id="reservation-date">
+                    </p>
+                    <p>
+                        <label for="reservation-table">Choose table</label>
+                        <select name="table" id="reservation-table">
+                            <option value="2">2 people</option>
+                            <option value="4">4 people</option>
+                            <option value="6">6 people</option>
+                            <option value="">more than 6 people</option>
+                        </select>
+                    </p>
+                    <p>
+                        <button name="submit" type="submit" id="reservation-submit">Book now!</button>
+                    </p>
+                </form>
             </div>
         </section>
         <footer class="footer" itemscope>
@@ -233,7 +296,7 @@
                 </div>
             </div>
             <div class="section-content">
-                <div class="footer__location">Our Location</div>
+                <h2 class="section-content__heading">Our Location</h2>
                 <div class="footer__address">
                     <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                         <span itemprop="streetAddress">2000 Capitol Ave</span>
@@ -241,7 +304,6 @@
                         <span itemprop="addressRegion">CA</span>
                     </span>
                 </div>
-                <div class="footer__socials"></div>
             </div>
         </footer>
     </div>

@@ -1,2 +1,128 @@
 @import "~bootstrap/scss/bootstrap";
 @import "./scss/core";
+.container {
+  padding: 0;
+}
+section {
+  padding: 0 1em;
+}
+button {
+  background: none;
+  border: none;
+}
+.header {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1em 0.5em;
+  position: fixed;
+  width: 100%;
+  margin: 0 0 1em 0;
+}
+.nav {
+  display: inline-block;
+  &__menu {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    background: $black;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    padding: 2em;
+    transition: all 0.32s;
+    &--close {
+      display: block;
+    }
+  }
+  &__item {
+    padding: 0.7em 0;
+    text-align: center;
+    color: $white;
+    font-size: 1.3em;
+    font-weight: 600;
+    border-bottom: 1px solid $gold;
+  }
+}
+.landing {
+  height: 100vh;
+  color: $white;
+  background: rgb(56, 77, 30);
+  background: {
+    // image: url("./assets/img/bglanding.png");
+    size: cover;
+    repeat: no-repeat;
+    position: center;
+  }
+  &-page {
+    &__heading {
+      text-align: center;
+      margin-top: calc(50% - 1em);
+    }
+  }
+  &__buttons {
+    text-align: center;
+    margin: 1em 0 3em 0;
+  }
+}
+
+.page-button {
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 0.4em 1em;
+  &:not(:first-child) {
+    margin-left: 1em;
+  }
+  &--black {
+    background-color: rgba(15, 15, 15, 0.7);
+    border: 1px solid $black;
+  }
+  &--white {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid $white;
+  }
+}
+
+.menu-btn {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  z-index: 3;
+  &--close {
+    .line01 {
+      transform: rotate(45deg);
+      top: 49%;
+    }
+    .line02,
+    .line03 {
+      transform: rotate(-45deg);
+      top: 49%;
+    }
+  }
+}
+.line {
+  position: absolute;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  transition: all cubic-bezier(0.25, 0.1, 0.28, 1.54) 0.32s;
+}
+
+.line01 {
+  top: 19%;
+}
+
+.line02 {
+  top: 49%;
+}
+
+.line03 {
+  top: 79%;
+}
+
+.footer {
+  padding: 1em;
+}

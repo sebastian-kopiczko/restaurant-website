@@ -44,15 +44,44 @@ module.exports = {
               loader: "postcss-loader"
             },
             {
-              loader: "sass-loader"
+              loader: "sass-loader",
+              options: {
+                includePaths: [path.resolve(__dirname, "src")]
+              }
             }
           ],
           fallback: "style-loader"
         })
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: ["file-loader", "image-webpack-loader"]
+        test: /\.(gif|png|jpe?g|svg)$/,
+        use: [
+          "file-loader",
+          {
+            loader: "image-webpack-loader",
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              // optipng.enabled: false will disable optipng
+              optipng: {
+                enabled: false
+              },
+              pngquant: {
+                quality: "65-90",
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false
+              },
+              // the webp option will enable WEBP
+              webp: {
+                quality: 75
+              }
+            }
+          }
+        ]
       }
     ]
   },

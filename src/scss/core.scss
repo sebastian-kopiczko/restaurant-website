@@ -1,10 +1,36 @@
+@import url("https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,700|Lato:300,400");
+
 $white: #f1f1f2;
 $gold: #cc9900;
 $light-gold: #c9a131;
 $black: #191919;
 $grey: #575757;
 
+@mixin bg-image($img) {
+  background: {
+    image: url("./assets/img/"+$img+".png");
+  }
+}
+@mixin icon-img($name) {
+  &::before {
+    content: "";
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    background-size: 25px 25px;
+    background-image: url("./assets/svg/icon-"+$name+".svg");
+    background-repeat: no-repeat;
+  }
+}
+
+@mixin decoration($color) {
+  &::after {
+    content: url("./assets/img/decoration-"+$color+".png");
+    position: relative;
+  }
+}
 body {
+  font-family: "Lato", sans-serif;
 }
 
 a {
@@ -13,4 +39,23 @@ a {
 
 li {
   list-style: none;
+}
+section {
+  max-width: 960px;
+}
+
+button {
+  background: none;
+  border: transparent;
+}
+button,
+a {
+  &:focus {
+    border: 2px solid $gold;
+    outline: none;
+  }
+}
+
+ul {
+  padding: 0;
 }

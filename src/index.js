@@ -1,21 +1,31 @@
 import "./index.scss";
-import img from "./assets/img/logo.png";
-import bglanding from "./assets/img/bg-landing.png";
-window.$ = window.jQuery = require("jquery");
-window.Popper = require("popper.js");
 require("bootstrap");
 
-console.log("hello world!");
-
-// use tooltip and popover components everywhere
-$(function() {
-  $('[data-toggle="tooltip"]').tooltip();
-  $('[data-toggle="popover"]').popover();
-});
+window.$ = window.jQuery = require("jquery");
+window.Popper = require("popper.js");
 
 const menuBtn = document.getElementById("menuBtn");
 const navMenu = document.getElementById("navMenu");
+const menuItems = document.querySelectorAll(".menu a");
+
+for (var menuItem of menuItems) {
+  menuItem.addEventListener(
+    "click",
+    () => {
+      navMenu.classList.remove("menu--opened");
+    },
+    false
+  );
+}
+
 menuBtn.addEventListener("click", () => {
-  menuBtn.classList.toggle("menu-btn--close");
-  navMenu.classList.toggle("nav__menu--close");
+  navMenu.classList.add("menu--opened");
+});
+
+window.addEventListener("keydown", e => {
+  if (e.keyCode == 27) {
+    if (navMenu.classList.contains("menu--opened")) {
+      navMenu.classList.remove("menu--opened");
+    }
+  }
 });

@@ -19,21 +19,25 @@
   .nav {
     &__menu,
     .menu {
+      // width: 85%;
       right: 0;
       top: 0;
       z-index: 2;
-      background: $black;
+      background: $white;
       transition: all 0.32s;
       transform: translateX(100%);
       &--opened {
         transform: translateX(0);
       }
       &__item {
-        padding: 0.7em 0;
-        color: $white;
+        text-align: center;
+        padding: 1em 3em;
+        color: rgb(56, 56, 56);
         font-size: 1.3em;
-        font-weight: 600;
-        border-bottom: 1px solid $gold;
+        // border-bottom: 1px solids       $gold-transparent;
+        a {
+          transition: color 0.3s;
+        }
       }
       &__button {
         display: inline-block;
@@ -57,6 +61,12 @@
         }
         .line03 {
           top: 79%;
+        }
+        &--opened {
+          .line {
+            background: $black;
+            z-index: 3;
+          }
         }
       }
     }
@@ -121,6 +131,7 @@
 
 // ////// ABOUT
 .about {
+  @include bg-image("bg-about");
   &__heading {
     @include decoration("gold");
   }
@@ -134,7 +145,10 @@
 // ////// INGREDIENTS
 .ingredients {
   @include bg-image("bg-ingredients");
-  background-position: center;
+  background: {
+    position: center;
+    repeat: no-repeat;
+  }
   color: $white;
   .section-content {
     background: rgba(0, 0, 0, 0.7);
@@ -145,9 +159,13 @@
       top: 0.2em;
     }
   }
+  &__img {
+    width: 80%;
+  }
 }
 // ////// MENU
 .menu {
+  @include bg-image("bg-menu");
   .category {
     &__heading {
       @include decoration("gold");
@@ -159,7 +177,7 @@
   .dish {
     &__heading {
       font-size: 1.4em;
-      border-bottom: 1px solid $light-gold;
+      border-bottom: 1px solid $gold-transparent;
     }
     &__description {
       font-family: "Lato";
@@ -175,9 +193,27 @@
   &__heading {
     @include decoration("white");
   }
+  &__text {
+    position: relative;
+    &::before {
+      content: open-quote;
+      font-size: 3em;
+      position: absolute;
+      top: -0.5em;
+      left: -10px;
+    }
+    &::after {
+      content: close-quote;
+      font-size: 3em;
+      position: absolute;
+      bottom: -0.75em;
+      right: 0;
+    }
+  }
 }
 // ////// BOOKING
 .reservation {
+  @include bg-image("bg-about");
   &__heading {
     @include decoration("gold");
   }
@@ -237,7 +273,6 @@
 h1,
 h2,
 .logo__text,
-.menu,
 .dish__heading {
   font-family: "Gentium Book Basic", serif;
 }

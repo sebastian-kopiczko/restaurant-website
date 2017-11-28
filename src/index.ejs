@@ -23,7 +23,7 @@
 
 <body>
     <!-- div.container>(div.landing>(header.header>a.logo+img.logo__img+nav.nav>ul.nav__menu>li.menu__item*7>a)+(section.landing-page>h1.landing-page__heading+div.landing__buttons>a.page-button*2))+(section.
-        >div.section-content>h2.section-content__heading+p.section-content__text)+(section.ingredients>div.section-content.bg-shadow--dark>h2.section-content__heading+p.section-content__text+img.ingredients__img*3)+(section.menu>div.section-content>h2.section-content__heading+ul.menu__category>li.menu__item*4)+(section.review>div.section-content.bg-shadow--dark>h2.section-content__heading+p.section-content__text)+(section.book-table>img.book-table__img*2+div.section-content>h2.section-content__heading+p.section-content__text)+(footer.footer>(div.section-content>h2.section-content__heading+p.section-content__text)+(div.section-content>h2.section-content__heading+div.footer__opening-hours)+(div.section-content>div.footer__location+div.footer__socials)) -->
+        >div.section-content>h2.section-content__heading+p.section-content__text)+(section.ingredients>div.section-content.bg-shadow--dark>h2.section-content__heading+p.section-content__text+img.ingredients__img*3)+(section.menu>div.section-content>h2.section-content__heading+ul.menu__category>li.menu__item*4)+(section.review>div.section-content.bg-shadow--dark>h2.section-content__heading+p.saection-content__text)+(section.book-table>img.book-table__img*2+div.section-content>h2.section-content__heading+p.section-content__text)+(footer.footer>(div.section-content>h2.section-content__heading+p.section-content__text)+(div.section-content>h2.section-content__heading+div.footer__opening-hours)+(div.section-content>div.footer__location+div.footer__socials)) -->
     <div itemscope itemtype="http://schema.org/Restaurant" class="container p-0 mw-100">
         <div class="d-flex flex-column justify-content-between landing pb-5 pb-md-10">
             <header class="header px-1 py-2 w-100 px-lg-2 py-lg-4">
@@ -37,7 +37,7 @@
                             <span class="line line02"></span>
                             <span class="line line03"></span>
                         </button>
-                        <ul id="navMenu" class="position-fixed w-100 p-2 p-md-0 h-100 nav__menu menu">
+                        <ul id="navMenu" class="d-flex flex-column justify-content-center position-fixed p-2 p-md-0 h-100 w-100 nav__menu menu">
                             <li class="menu__item">
                                 <a href="javascript:void(0)">Home</a>
                             </li>
@@ -57,14 +57,14 @@
                                 <a href="#reservations ">Reservations</a>
                             </li>
                             <li class="menu__item">
-                                <a class="" href="https://www.facebook.com/">
-                                    <span data-icon="facebook" aria-hidden="true" class="social-icon icon icon--fb">Facebook</span>
+                                <a class="mr-4" href="https://www.facebook.com/">
+                                    <span data-icon="facebook" aria-hidden="true" class="social-icon icon icon--fb"></span>
                                 </a>
-                                <a href="https://www.youtube.com/">
-                                    <span data-icon="youtube" aria-hidden="true" class="social-icon icon icon--yt">Youtube</span>
+                                <a class="mr-4" href="https://www.youtube.com/">
+                                    <span data-icon="youtube" aria-hidden="true" class="social-icon icon icon--yt"></span>
                                 </a>
                                 <a href="https://www.twitter.com/">
-                                    <span data-icon="twitter" aria-hidden="true" class="social-icon icon icon--tw">Twitter</span>
+                                    <span data-icon="twitter" aria-hidden="true" class="social-icon icon icon--tw"></span>
                                 </a>
                             </li>
                         </ul>
@@ -78,7 +78,7 @@
             </div>
         </div>
         <section id="about" class="about">
-            <div class="d-flex flex-column mx-md-auto px-3 py-4 section-content">
+            <div class="d-flex flex-column mx-auto px-3 py-4 section-content">
                 <h2 class="about__heading text-center text--gold ">Just the right food</h2>
                 <p class="about__text">If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back
                     for more. Perfect materials and freshly baked food, delicious Lambda cakes, muffins, and gourmet coffees
@@ -89,15 +89,16 @@
                 <img alt="Grilled meat and veggies" src=<%=require( './assets/img/dish.png') %>>
             </div>
         </section>
-        <section id="ingredients" class="ingredients">
-            <div class="d-flex flex-column mx-md-auto px-3 py-4 section-content">
-                <h2 class="ingredients__heading text-center">Fine ingredients</h2>
-                <p class="ingredients__text" itemscope itemtype="http://schema.org/Person ">If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back
+        <section id="ingredients" class="ingredients py-5">
+            <div class="d-flex flex-column mx-auto px-4 py-4 section-content">
+                <h2 class="my-2 ingredients__heading text-center">Fine ingredients</h2>
+                <p class="my-2 ingredients__text" itemscope itemtype="http://schema.org/Person ">If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our customers coming back
                     for more. Perfect materials and freshly baked food, delicious Lambda cakes, muffins, and gourmet coffees
                     make us hard to resist! Stop in today and check us out! -
                     <a href="https://example.net/author " class=" " itemprop="name=">Mark Johnson</a>
                 </p>
-                <img alt="Minatures of ingredients" class="ingredients__img" src=<%=require( './assets/img/ingredients.png') %>>
+                <img class="my-2 mx-auto ingredients__img" alt="Minatures of ingredients" class="mx-auto ingredients__img" src=<%=require(
+                    './assets/img/ingredients.png') %>>
             </div>
         </section>
         <section id="menu" class="menu" itemscope itemtype="http://schema.org/Menu ">
@@ -162,10 +163,11 @@
                 </div>
             </div>
         </section>
-        <section id="review" class="review">
-            <div class="d-flex flex-column mx-md-auto px-3 py-4 section-content">
-                <h2 class="review__heading text-center">Guest Reviews</h2>
-                <p class="review__text ">More than 450 reviews If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our
+        <section id="review" class="review py-5">
+            <div class="d-flex flex-column mx-md-auto px-4y
+             py-4 section-content">
+                <h2 class="review__heading my-2  text-center">Guest Reviews</h2>
+                <p class="review__text py-2 px-2">More than 450 reviews If you’ve been to one of our restaurants, you’ve seen – and tasted – what keeps our
                     customers coming back for more. Perfect materials and freshly baked food, delicious Lambda cakes, muffins,
                     and gourmet coffees make us hard to resist! Stop in today and check us out!
                 </p>
@@ -218,7 +220,7 @@
                 </div>
                 <div class="footer__item mb-2">
                     <h2 class="footer__heading mb-0">Opening Hours</h2>
-                    <div class="footer__opening-hours opening-hours m-0">
+                    <div class="footer__opening-hours opening-hours mb-2">
                         <div class="opening-hours__item ">Mon-Thu: 7:30 am - 9:00 pm</div>
                         <div class="opening-hours__item ">Fri-Sun: 9:00 am - 11:00 pm</div>
                         <meta itemprop="openingHours " content="Mo-Th 07:30-21:00 " />

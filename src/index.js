@@ -7,20 +7,25 @@ window.Popper = require("popper.js");
 const menuBtn = document.getElementById("menuBtn");
 const navMenu = document.getElementById("navMenu");
 const menuItems = document.querySelectorAll(".menu a");
+menuBtn.addEventListener(
+  "click",
+  () => {
+    menuBtn.classList.toggle("menu__button--opened");
+    navMenu.classList.toggle("menu--opened");
+  },
+  false
+);
 
 for (var menuItem of menuItems) {
   menuItem.addEventListener(
     "click",
     () => {
-      navMenu.classList.remove("menu--opened");
+      menuBtn.classList.toggle("menu__button--opened");
+      navMenu.classList.toggle("menu--opened");
     },
     false
   );
 }
-
-menuBtn.addEventListener("click", () => {
-  navMenu.classList.add("menu--opened");
-});
 
 window.addEventListener("keydown", e => {
   if (e.keyCode == 27) {

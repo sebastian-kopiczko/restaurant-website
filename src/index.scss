@@ -8,6 +8,7 @@
 .header {
   background: linear-gradient($black, transparent);
   z-index: 2;
+  position: fixed;
   &__logo,
   .logo {
     display: block;
@@ -19,59 +20,116 @@
   .nav {
     &__menu,
     .menu {
-      // width: 85%;
-      right: 0;
+      visibility: hidden;
+      opacity: 0;
+      left: 0;
       top: 0;
+      height: 0;
       z-index: 2;
       background: $white;
-      transition: all 0.32s;
-      transform: translateX(100%);
+      transition: opacity 0.3s ease-in-out;
       &--opened {
-        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
+        height: 100vh;
       }
+
       &__item {
         text-align: center;
-        padding: 1em 3em;
-        color: rgb(56, 56, 56);
-        font-size: 1.3em;
-        // border-bottom: 1px solids       $gold-transparent;
+        padding: 0.5em 2em;
+        color: $black;
+        font-size: 1.2em;
         a {
           transition: color 0.3s;
+        }
+        @include media-breakpoint-up(md) {
+          font-size: 1.35em;
+          padding: 0.7em;
+        }
+        @include media-breakpoint-up(lg) {
+          font-size: 1.5em;
+          padding: 0.7em;
+        }
+        @include media-breakpoint-up(xl) {
+          font-size: 1.65em;
         }
       }
       &__button {
         display: inline-block;
         width: 30px;
         height: 30px;
-        position: relative;
         cursor: pointer;
+        position: relative;
+        z-index: 3;
         .line {
+          transition: all 0.3s ease;
           position: absolute;
           left: 0;
           height: 3px;
           width: 100%;
           background: white;
           border-radius: 4px;
-        }
-        .line01 {
-          top: 19%;
-        }
-        .line02 {
-          top: 49%;
-        }
-        .line03 {
-          top: 79%;
+          &--top {
+            top: 19%;
+          }
+          &--center {
+            top: 49%;
+          }
+          &--bottom {
+            top: 79%;
+          }
         }
         &--opened {
           .line {
             background: $black;
-            z-index: 3;
+            width: 35px;
+            top: 1em;
+            right: 1em;
+            &--top {
+              top: 12px;
+              left: -4px;
+              transform: rotate(-45deg);
+            }
+            &--center {
+              transform: translateX(-100px);
+              opacity: 0;
+            }
+            &--bottom {
+              top: 12px;
+              left: -4px;
+              transform: rotate(45deg);
+            }
           }
         }
       }
     }
-
-    @media (min-width: 992px) {
+    .social-icons {
+      height: 60px;
+      &--fb {
+        @include icon-img("fb--gold");
+        &:hover {
+          @include icon-img("fb--black");
+        }
+      }
+      &--yt {
+        @include icon-img("yt--gold");
+        &:hover {
+          @include icon-img("yt--black");
+        }
+      }
+      &--tw {
+        @include icon-img("tw--gold");
+        &:hover {
+          @include icon-img("tw--black");
+        }
+      }
+      &__item {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+      }
+    }
+    @include media-breakpoint-up(lg) {
       display: block;
       position: relative;
       &__btn {
@@ -97,7 +155,12 @@
   }
 }
 .section-content {
-  max-width: 450px;
+  transition: all 0.3s ease-in-out;
+
+  max-width: 550px;
+  @include media-breakpoint-up(md) {
+    max-width: 450px;
+  }
 }
 
 /////// LANDING
@@ -105,53 +168,63 @@
   height: 100vh;
   color: $white;
   @include bg-image("bg-landing");
-  background-size: cover;
-  background-position: right;
+  background: {
+    size: cover;
+    position: right;
+  }
+
   &__heading {
+    max-width: 550px;
+    padding-top: 25vh;
     font-size: 3em;
+    transition: all 0.3s ease-in-out;
+    @include media-breakpoint-up(md) {
+      padding-top: 30vh;
+    }
+    @include media-breakpoint-up(lg) {
+      font-size: 3.8em;
+      padding-top: 40vh;
+    }
     @include decoration("white");
     &::after {
       top: 0.2em;
     }
   }
 }
-.page-button {
-  max-width: 10em;
-  display: inline-block;
-  text-transform: uppercase;
-  &--black {
-    background-color: rgba(15, 15, 15, 0.7);
-    border: 1px solid $black;
-  }
-  &--white {
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 1px solid $white;
-  }
-}
 
 // ////// ABOUT
 .about {
+  overflow: hidden;
   @include bg-image("bg-about");
   &__heading {
     @include decoration("gold");
   }
+  &__chef-img {
+    @include media-breakpoint-up(sm) {
+      position: relative;
+      left: 2em;
+    }
+  }
   &__photo {
     display: none;
-    @media (min-width: 768px) {
+    position: relative;
+    right: -5em;
+    @include media-breakpoint-up(md) {
       display: block;
+    }
+    @include media-breakpoint-up(xl) {
+      right: 0;
     }
   }
 }
 // ////// INGREDIENTS
 .ingredients {
+  padding: 0;
+  color: $white;
   @include bg-image("bg-ingredients");
   background: {
     position: center;
     repeat: no-repeat;
-  }
-  color: $white;
-  .section-content {
-    background: rgba(0, 0, 0, 0.7);
   }
   &__heading {
     @include decoration("white");
@@ -162,13 +235,45 @@
   &__img {
     width: 80%;
   }
+
+  .section-content {
+    background: rgba(0, 0, 0, 0.85);
+    @include media-breakpoint-up(md) {
+      position: relative;
+      right: -8em;
+    }
+    @include media-breakpoint-up(lg) {
+      position: relative;
+      right: -14em;
+    }
+  }
 }
 // ////// MENU
 .menu {
+  .section-content {
+    @include media-breakpoint-up(md) {
+      max-width: 100%;
+    }
+    @include media-breakpoint-up(lg) {
+      max-width: 960px;
+    }
+  }
   @include bg-image("bg-menu");
   .category {
+    transition: all 0.3s ease-in-out;
+    @include media-breakpoint-up(md) {
+      max-width: 300px;
+    }
+    @include media-breakpoint-up(lg) {
+      max-width: 430px;
+    }
     &__heading {
       @include decoration("gold");
+    }
+    &__list {
+      li {
+        margin: 0 auto;
+      }
     }
   }
   &__item {
@@ -189,6 +294,9 @@
 // ////// REVIEWS
 .review {
   @extend .ingredients;
+  .section-content {
+    right: 0;
+  }
   @include bg-image("bg-reviews");
   &__heading {
     @include decoration("white");
@@ -200,13 +308,15 @@
       font-size: 3em;
       position: absolute;
       top: -0.5em;
-      left: -10px;
+      left: -15px;
+      opacity: 0.85;
     }
     &::after {
       content: close-quote;
       font-size: 3em;
       position: absolute;
       bottom: -0.75em;
+      opacity: 0.85;
       right: 0;
     }
   }
@@ -214,25 +324,48 @@
 // ////// BOOKING
 .reservation {
   @include bg-image("bg-about");
+  overflow: hidden;
+  padding: 1em 0;
+  transition: all 0.3s ease-in-out;
+  @include media-breakpoint-up(sm) {
+    padding: 2em 0;
+  }
+  .section-content {
+    max-width: 100%;
+    @include media-breakpoint-up(lg) {
+      max-width: 960px;
+    }
+  }
   &__heading {
     @include decoration("gold");
   }
   &__photo {
     display: none;
-    @media (min-width: 768px) {
-      display: block;
+    img {
+      display: none;
+    }
+    @include media-breakpoint-up(lg) {
+      img {
+        display: block;
+        width: 100%;
+      }
+      width: 40%;
+      position: relative;
+      overflow: hidden;
     }
   }
-  &__button {
-    cursor: pointer;
-    background: $light-gold;
-    border: 1px solid $black;
-    color: $white;
-    transition: all 0.2s;
-    text-transform: uppercase;
-    &:focus {
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0px 0px 5px 2px $gold;
+
+  .reservation__form {
+    width: 100%;
+    max-width: 550px;
+  }
+
+  .input-container {
+    min-width: 200px;
+    @include media-breakpoint-up(sm) {
+      &:nth-child(odd) {
+        margin-right: 2em;
+      }
     }
   }
   label {
@@ -242,8 +375,14 @@
     font-weight: bolder;
   }
   input {
+    transition: all 0.3s ease-in-out;
     &:focus {
-      border: 1px solid $gold;
+      &:not([type="date"]) {
+        width: 80%;
+        border: 1px solid $gold;
+      }
+    }
+    &:active {
     }
   }
 }
@@ -251,6 +390,26 @@
 .footer {
   background: $black;
   color: $white;
+  padding: 1em;
+  .section-content {
+    max-width: 100%;
+    @include media-breakpoint-up(lg) {
+      max-width: 1100px;
+    }
+  }
+  &__heading {
+    border-bottom: 1px solid $white;
+  }
+  &__item {
+    min-width: 270px;
+  }
+  &__about {
+    max-width: 380px;
+  }
+  &__opening-hours,
+  &__location {
+    max-width: 340px;
+  }
 }
 
 //////// OTHER
@@ -259,20 +418,34 @@
     color: $gold;
   }
 }
-.icon {
-  &--fb {
-    @include icon-img("fb");
-  }
-  &--yt {
-    @include icon-img("yt");
-  }
-  &--tw {
-    @include icon-img("tw");
-  }
-}
+
 h1,
 h2,
 .logo__text,
 .dish__heading {
   font-family: "Gentium Book Basic", serif;
+}
+.page-button {
+  padding: 0.5em 1em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &--custom {
+    background-color: rgba(15, 15, 15, 0.7);
+    border-radius: 0;
+    border: 1px solid $white;
+    &:hover {
+      background-color: $white;
+      color: $black;
+      border: 1px solid $black;
+    }
+  }
+  &--gold {
+    background-color: $gold;
+    color: $white;
+    border: 1px solid $black;
+    &:hover {
+      background-color: $white;
+      color: $black;
+    }
+  }
 }

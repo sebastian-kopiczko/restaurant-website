@@ -6,31 +6,26 @@ window.Popper = require("popper.js");
 
 const menuBtn = document.getElementById("menuBtn");
 const navMenu = document.getElementById("navMenu");
-const menuItems = document.querySelectorAll(".menu a");
-menuBtn.addEventListener(
-  "click",
-  () => {
+const menuItems = Array.prototype.slice.call(
+  document.querySelectorAll(".menu a")
+);
+menuItems.push(menuBtn);
+
+menuItems.forEach((el, index) => {
+  el.addEventListener("click", () => {
+    console.log(el, index);
     menuBtn.classList.toggle("menu__button--opened");
     navMenu.classList.toggle("menu--opened");
-  },
-  false
-);
-
-for (var menuItem of menuItems) {
-  menuItem.addEventListener(
-    "click",
-    () => {
-      menuBtn.classList.toggle("menu__button--opened");
-      navMenu.classList.toggle("menu--opened");
-    },
-    false
-  );
-}
+  });
+});
 
 window.addEventListener("keydown", e => {
   if (e.keyCode == 27) {
     if (navMenu.classList.contains("menu--opened")) {
       navMenu.classList.remove("menu--opened");
+    }
+    if (menuBtn.classList.contains("menu__button--opened")) {
+      menuBtn.classList.remove("menu__button--opened");
     }
   }
 });

@@ -1,0 +1,33 @@
+.landing {
+    height: 100vh;
+    color: $white;
+    z-index: 1;
+    @include bg-image("bg-landing");
+    position: relative;
+    background: {
+        position: right;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: -1;
+    }
+    &__content {
+        position: relative;
+        top: 3em;
+    }
+    &__heading {
+        z-index: 2;
+        max-width: 550px;
+        transition: all 0.3s ease-in-out;
+        @include decoration("white");
+        &::after {
+            top: 0.5em;
+        }
+    }
+}

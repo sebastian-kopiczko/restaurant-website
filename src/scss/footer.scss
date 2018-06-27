@@ -1,0 +1,11 @@
+.footer {
+    padding: 2em 0;
+    background: $black;
+    color: $white;
+    &__box {
+        max-width: 25em;
+        &-content {
+            color: #e0e0e0;
+        }
+    }
+}

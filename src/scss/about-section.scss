@@ -1,0 +1,26 @@
+.about {
+    overflow: hidden;
+    @include bg-image("bg-about");
+    &__heading {
+        @include decoration("gold");
+    }
+    &__chef-img {
+        @include media-breakpoint-up(sm) {
+            position: relative;
+            left: 2em;
+        }
+    }
+    &__photo {
+        display: none;
+        @include media-breakpoint-up(md) {
+            display: block;
+        }
+        @include media-breakpoint-up(xl) {
+            right: 0;
+        }
+        img {
+            width: 100%;
+            object-fit: center;
+        }
+    }
+}

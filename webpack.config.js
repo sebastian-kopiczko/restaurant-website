@@ -1,9 +1,10 @@
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require("path");
+const glob = require("glob");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
-// const LOGO_PATH = path.resolve(__dirname, "fixtures/logo.png")
+const PurifyCSSPlugin = require('purifycss-webpack')
+// const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const extractSass = new ExtractTextPlugin({
   filename: "styles.css"
 });
@@ -15,28 +16,28 @@ module.exports = {
     path: path.resolve(__dirname, "dist")
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.js$/,
         include: path.resolve(__dirname, "src"),
         exclude: /(node_modules|bower_components)/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: [["es2015", { modules: false }]]
-            }
+        use: [{
+          loader: "babel-loader",
+          options: {
+            presets: [
+              ["es2015", {
+                modules: false
+              }]
+            ]
           }
-        ]
+        }]
       },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          use: [
-            {
+          use: [{
               loader: "css-loader",
               options: {
-                // minimize: true,
+                minimize: false,
                 sourceMap: true
               }
             },
@@ -55,12 +56,12 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: { name: "[path][name].[ext]" }
+        use: [{
+          loader: "file-loader",
+          options: {
+            name: "[path][name].[ext]"
           }
-        ]
+        }]
       }
     ]
   },
@@ -72,19 +73,26 @@ module.exports = {
   },
   plugins: [
     //     new FaviconsWebpackPlugin("./src/assets/favicon.png"),
+    new ExtractTextPlugin('styles.css'),
+    // Make sure this is after ExtractTextPlugin!
+    new PurifyCSSPlugin({
+      // Give paths to parse for rules. These should be absolute!
+      paths: glob.sync(path.join(__dirname, 'src/*.ejs')),
+      minimize: true
+    }),
     new HtmlWebpackPlugin({
       title: "Restaurant website",
       minify: {
-        collapseWhitespace: true
+        collapseWhitespace: false
       },
       hash: true,
       template: "./src/index.ejs"
     }),
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      Popper: ["popper.js", "default"]
-    }),
+    // new webpack.ProvidePlugin({
+    //   $: "jquery",
+    //   jQuery: "jquery",
+    //   Popper: ["popper.js", "default"]
+    // }),
     extractSass
   ]
 };

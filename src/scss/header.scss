@@ -1,0 +1,150 @@
+.header {
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+    color: #fff;
+    position: fixed;
+    &__logo,
+    .logo {
+        display: block;
+        transition: all 0.2s ease-in;
+        &__text {
+            text-transform: uppercase;
+            font-size: 1.8rem;
+        }
+    }
+    .nav {
+        &__menu,
+        .menu {
+            visibility: hidden;
+            opacity: 0;
+            left: 0;
+            top: 0;
+            height: 0;
+            z-index: 2;
+            background: $white;
+            transition: opacity 0.3s ease-in-out;
+            &--opened {
+                visibility: visible;
+                opacity: 1;
+                height: 100vh;
+            }
+            &__item {
+                text-align: center;
+                padding: 0.5em 2em;
+                color: $black;
+                font-size: 1.2em;
+                a {
+                    transition: color 0.3s;
+                }
+                @include media-breakpoint-up(md) {
+                    font-size: 1.35em;
+                    padding: 0.7em;
+                }
+                @include media-breakpoint-up(lg) {
+                    font-size: 1.5em;
+                    padding: 0.7em;
+                }
+                @include media-breakpoint-up(xl) {
+                    font-size: 1.65em;
+                }
+            }
+            &__button {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                position: relative;
+                z-index: 3;
+                .line {
+                    transition: all 0.3s ease;
+                    position: absolute;
+                    left: 0;
+                    height: 3px;
+                    width: 100%;
+                    background: white;
+                    border-radius: 4px;
+                    &--top {
+                        top: 19%;
+                    }
+                    &--center {
+                        top: 49%;
+                    }
+                    &--bottom {
+                        top: 79%;
+                    }
+                }
+                &--opened {
+                    .line {
+                        background: $black;
+                        width: 35px;
+                        top: 1em;
+                        right: 1em;
+                        &--top {
+                            top: 12px;
+                            left: -4px;
+                            transform: rotate(-45deg);
+                        }
+                        &--center {
+                            transform: translateX(-100px);
+                            opacity: 0;
+                        }
+                        &--bottom {
+                            top: 12px;
+                            left: -4px;
+                            transform: rotate(45deg);
+                        }
+                    }
+                }
+            }
+        }
+        .social-icons {
+            height: 60px;
+            &--fb {
+                @include icon-img("fb--gold");
+                &:hover {
+                    @include icon-img("fb--black");
+                }
+            }
+            &--yt {
+                @include icon-img("yt--gold");
+                &:hover {
+                    @include icon-img("yt--black");
+                }
+            }
+            &--tw {
+                @include icon-img("tw--gold");
+                &:hover {
+                    @include icon-img("tw--black");
+                }
+            }
+            &__item {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+            }
+        }
+        @include media-breakpoint-up(lg) {
+            display: block;
+            position: relative;
+            &__btn {
+                display: none;
+            }
+            &__menu {
+                position: relative;
+                background: none;
+                border: none;
+                margin: 0;
+                display: block;
+                height: 50px;
+            }
+            &__item {
+                display: inline-block;
+                border: none;
+                padding: 0;
+                &:not(:first-child) {
+                    margin-left: 0.5em;
+                }
+            }
+        }
+    }
+}

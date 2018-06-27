@@ -1,40 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,700|Lato:300,400");
-
-$white: #f1f1f2;
-$gold: #cc9900;
-$light-gold: #c9a131;
-$gold-transparent: rgba(184, 155, 25, 0.411);
-$black: #191919;
-$grey: #575757;
-
-@mixin bg-image($img) {
-  background: {
-    image: url("./assets/img/"+$img+".png");
-    size: cover;
-  }
-}
-@mixin icon-img($name) {
-  &::before {
-    content: "";
-    display: inline-block;
-    height: 35px;
-    width: 35px;
-    background-color: transparent;
-    background-size: 35px 35px;
-    background-image: url("./assets/svg/icon-"+$name+".svg");
-    background-repeat: no-repeat;
-  }
-}
-
-@mixin decoration($color) {
-  &::after {
-    display: block;
-    content: url("./assets/img/decoration-"+$color+".png");
-    position: relative;
-  }
-}
+@import url('https://fonts.googleapis.com/css?family=Gentium+Basic:400,700|Varela+Round');
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'Varela Round', sans-serif;
 }
 
 a {
@@ -44,29 +10,19 @@ a {
     color: $gold;
     text-decoration: none;
   }
-  &::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #000;
-    visibility: hidden;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s;
-  }
 }
 
 li {
   list-style: none;
 }
+
 section {
-  width: 100%;
-  @include media-breakpoint-up(sm) {
-    padding: 1em;
+  padding: 3em 0;
+  @include media-breakpoint-up(md) {
+    padding: 4em 0;
+  }
+  @include media-breakpoint-up(lg) {
+    padding: 5em 0;
   }
 }
 
@@ -74,6 +30,14 @@ button {
   background: none;
   border: transparent;
 }
+
+p {
+  max-width: 40em;
+  @include media-breakpoint-up(lg) {
+    max-width: 50em;
+  }
+}
+
 button,
 a {
   &:focus {
@@ -84,4 +48,48 @@ a {
 
 ul {
   padding: 0;
+}
+
+h1,
+h2,
+h3,
+.logo__text {
+  font-family: 'Gentium Basic', serif;
+}
+
+.page-button {
+  padding: 0.5em 0.9em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  @include media-breakpoint-up(sm) {
+    padding: 0.7em 1.4em;
+  }
+  @include media-breakpoint-up(lg) {
+    padding: 0.8em 1.8em;
+  }
+  &--custom {
+    background-color: rgba(15, 15, 15, 0.7);
+    border-radius: 0;
+    border: 1px solid $white;
+    &:hover {
+      background-color: $white;
+      color: $black;
+      border: 1px solid $black;
+    }
+  }
+  &--gold {
+    background-color: $gold;
+    color: $white;
+    border: 1px solid $black;
+    &:hover {
+      background-color: $white;
+      color: $black;
+    }
+  }
+}
+
+.text {
+  &--gold {
+    color: $gold;
+  }
 }

@@ -1,0 +1,21 @@
+.menu {
+    &__heading {
+        @include decoration("gold");
+    }
+    &__box {
+        max-width: 23em;
+        padding: 0 0.5em;
+        @include media-breakpoint-up(lg) {
+            max-width: 28em;
+        }
+    }
+    &__position {
+        &-head {
+            border-bottom: 1px solid $gold-transparent;
+        }
+        &-desc {
+            width: 95%;
+            color: $grey;
+        }
+    }
+}
